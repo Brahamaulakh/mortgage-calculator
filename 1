@@ -1,0 +1,32 @@
+import java.text.NumberFormat;
+import java.util.Scanner;
+
+//reading input
+public class Main {
+    public static void main(String[] args){
+        final byte MONTHS_IN_YEAR = 12;
+        final byte Percentage =100;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Principle: ");
+        int principle = scanner.nextInt();
+
+        System.out.println("Annual Interest Rate: ");
+        float annualInterest = scanner.nextFloat();
+        float monthlyInterest = annualInterest / Percentage / MONTHS_IN_YEAR;
+
+        System.out.println("Period (Years): ");
+        byte years = scanner.nextByte();
+        int numberOfPayments = years * MONTHS_IN_YEAR;
+
+        Double mortgage = principle * (monthlyInterest * Math.pow(1 + monthlyInterest , numberOfPayments))
+                / (Math.pow(1 + monthlyInterest , numberOfPayments) - 1);
+
+        String mortageFormated = NumberFormat.getCurrencyInstance().format(mortgage);
+
+        System.out.println("Total Mortgage = " + mortageFormated);
+
+    }
+
+    }
+
